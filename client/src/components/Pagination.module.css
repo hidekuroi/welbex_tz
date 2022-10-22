@@ -1,0 +1,38 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    background-color: #efefef;
+}
+
+.paginationItem {
+    border: 1px solid #dddddd;
+    transition: 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.paginationItem:hover {
+    background-color: #dddddd;
+}
+
+.paginationItem span {
+    margin: 5px 10px;
+}
+
+.active {
+    background-color: #fff;
+}
+
+.active:hover {
+    background-color: #fff;
+}
+
+.disabled {
+    background-color: #fff;
+}
+
+.disabled:hover {
+    background-color: white;
+}
