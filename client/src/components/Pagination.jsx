@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import c from './Pagination.module.css'
 
 /*
@@ -8,7 +8,7 @@ import c from './Pagination.module.css'
 
 const Pagination = ({currentPage, totalCount, limit, changePage}) => {
     const pageCount = Math.ceil(totalCount / limit)
-    const pages = []
+    let pages = []
 
     if(pageCount <= 7) {
         for (let p = 0; p < pageCount; p++) {
@@ -16,13 +16,17 @@ const Pagination = ({currentPage, totalCount, limit, changePage}) => {
         }
     }
     if(currentPage <= 4 && pageCount > 7) {
+        pages = []
+
         for (let p = 0; p < 6; p++) {
             pages.push(p + 1)
         }
         pages.push('...')
         pages.push(pageCount)
     }
-    if(currentPage > 4 && currentPage < pageCount - 3) {
+    if(currentPage > 4 && (currentPage < pageCount - 3)) {
+        pages = []
+
         pages.push(1)
         pages.push('...')
         for (let p = currentPage - 3; p < currentPage + 2; p++) {
@@ -56,9 +60,11 @@ const Pagination = ({currentPage, totalCount, limit, changePage}) => {
             <span>{'<'}</span>
         </div>
         {pages.map(p => 
-        <div key={p}
-            className={`${c.paginationItem} ${p === currentPage && `${c.active}` }`}
-            onClick={() => changePage(p)}
+        <div 
+            className={`${c.paginationItem} ${p === currentPage && `${c.active}`} ${!Number.isFinite(p) && `${c.disabled}`}`}
+            onClick={() => {
+                if(Number.isFinite(p)) changePage(p)
+            }}
         >
             <span>{p}</span>
         </div>

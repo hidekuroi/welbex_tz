@@ -56,6 +56,7 @@ const Table = () => {
                     ?
                         <>
                         {items.map((i, index) => {
+                            index = currentPage * 10 + index - 10
                             const date = i.date.split('T')
                         return <tr key={i.id}>
                             <td>{index + 1}</td>

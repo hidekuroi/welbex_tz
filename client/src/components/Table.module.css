@@ -9,6 +9,13 @@
     overflow: auto;
 }
 
+@media (max-width: 768px) or (max-height: 636px) {
+    .tableWrapper{
+        width: 100%;
+        height: 100%;
+    }
+}
+
 .loader {
     display: flex;
     align-items: center;
